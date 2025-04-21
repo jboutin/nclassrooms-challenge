@@ -191,8 +191,8 @@ const UserStats: React.FC = () => {
 
 	return (
 		<div className="flex flex-col gap-8">
-			<h1 className="text-4xl font-bold text-center mb-4">
-				Random User Statistics
+			<h1 className="text-5xl font-bold text-center mb-4">
+				Demographix
 			</h1>
 			<div className="card bg-base-100 shadow-xl input-container">
 				<div className="card-body">
