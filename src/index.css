@@ -2,15 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/* You can add custom styles below this line */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
 body {
-  font-family: 'Inter', sans-serif;
+	font-family: "Noto Sans", sans-serif;
 }
 
 .card {
-  @apply transition-shadow duration-300;
-}
+	@apply transition-shadow duration-300;
 
-.card:hover {
-  @apply shadow-2xl;
+	&:hover {
+		@apply shadow-2xl;
+	}
 }
