@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { fetchUsers } from "../services/api";
 import { User, Statistics } from "../types";
 import PieChart from "./PieChart";
@@ -21,7 +21,7 @@ const UserStats: React.FC = () => {
 		topStatesStats: {},
 	});
 
-	const nationalities = [
+	const nationalities = useMemo(() => [
 		"AU",
 		"BR",
 		"CA",
@@ -43,7 +43,7 @@ const UserStats: React.FC = () => {
 		"TR",
 		"UA",
 		"US",
-	];
+	], []);
 
 	// Fetch users when component mounts or inputs change
 	useEffect(() => {
@@ -75,12 +75,12 @@ const UserStats: React.FC = () => {
 			}
 		};
 
-		// Debounce before feetch after form field change to prevent too many API calls
+		// Debounce before fetch after form field change to prevent too many API calls
 		const timeoutId = setTimeout(loadUsers, 500);
 
 		// Cleanup timeout when component unmounts or inputs change again
 		return () => clearTimeout(timeoutId);
-	}, [userCount, nationality]);
+	}, [userCount, nationality, nationalities]);
 
 	// Calculate stats based on user data
 	const calculateStatistics = (userData: User[]) => {
@@ -156,6 +156,30 @@ const UserStats: React.FC = () => {
 		});
 	};
 
+	const genderChartData = useMemo(() =>
+		Object.entries(stats.genderStats).map(([label, value]) => ({
+			label,
+			value,
+		})),
+		[stats.genderStats]
+	);
+
+	const ageChartData = useMemo(() =>
+		Object.entries(stats.ageRangeStats).map(([label, value]) => ({
+			label,
+			value,
+		})),
+		[stats.ageRangeStats]
+	);
+
+	const statesChartData = useMemo(() =>
+		Object.entries(stats.topStatesStats).map(([label, value]) => ({
+			label,
+			value,
+		})),
+		[stats.topStatesStats]
+	);
+
 	// onChange handler for form fields
 	const handleUserCountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const value = parseInt(e.target.value);
@@ -167,27 +191,6 @@ const UserStats: React.FC = () => {
 	const handleNationalityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		setNationality(e.target.value);
 	};
-
-	const genderChartData = Object.entries(stats.genderStats).map(
-		([label, value]) => ({
-			label,
-			value,
-		})
-	);
-
-	const ageChartData = Object.entries(stats.ageRangeStats).map(
-		([label, value]) => ({
-			label,
-			value,
-		})
-	);
-
-	const statesChartData = Object.entries(stats.topStatesStats).map(
-		([label, value]) => ({
-			label,
-			value,
-		})
-	);
 
 	return (
 		<div className="flex flex-col gap-8">
