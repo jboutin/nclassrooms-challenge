@@ -1,41 +1,56 @@
-# Getting Started with Userdata Project
+# Demographix
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React application that visualizes demographic statistics from random user data. This project uses the Random User GraphQL API to fetch user profiles and display statistical breakdowns through interactive visualizations.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Configurable sample size (1-5000 users)
+- Nationality filtering via country codes
+- Interactive D3.js data visualizations
+- Real-time statistics updates
+- Responsive design implementation
 
-### `npm start`
+## User Statistics Displayed
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Percentage of users by gender
+- Percentage of users in the following age ranges: 0-20, 21-40, 41-60, 61-80, 81-100, 100+
+- Counts of users by length of last name
+- Percentage of users in each state for the 10 most common states in the results
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Development Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Node@23.x.x
+- npm@10.x.x
 
-### `npm run eject`
+### Local Development
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/demographix.git
+   cd demographix
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Install dependencies: `npm install`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+3. Start development server: `npm start`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+4. Access the application at [http://localhost:3000](http://localhost:3000)
 
-## Learn More
+### Production Build
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Generate a production-ready build: `npm run build`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This creates an optimized `build` directory that's minified and ready for deployment.
+
+## Technology Stack
+
+- [React 19](https://react.dev/blog/2024/12/05/react-19)
+- [TypeScript](https://www.typescriptlang.org/docs/handbook/react.html)
+- [Apollo Client for GraphQL](https://www.apollographql.com/docs/react) (GraphQL State Management)
+- [D3.js](https://d3js.org/) (for data visualization via Pie Charts)
+- [TailwindCSS](https://v3.tailwindcss.com/) with [DaisyUI](https://v4.daisyui.com/) (Front-end UI)
